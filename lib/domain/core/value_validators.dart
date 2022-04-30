@@ -36,3 +36,11 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
     return right(input);
   }
 }
+
+Either<ValueFailure<int>, int> validateAge(int input) {
+  if (input < 1 && input > 120) {
+    return left(ValueFailure.invalidAge(failedValue: input));
+  } else {
+    return right(input);
+  }
+}

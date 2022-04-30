@@ -1,4 +1,4 @@
-import 'package:euphoria/presentation/pages/sign_in/widgets/sign_up_form.dart';
+import 'widgets/sign_up_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

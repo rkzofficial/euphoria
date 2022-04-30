@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
+import 'firebase_options.dart';
 import 'injection.dart';
 import 'presentation/app_widget.dart';
-import 'firebase_options.dart';
 
 /// The entry point of the application.
 void main() async {
