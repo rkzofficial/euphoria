@@ -17,8 +17,7 @@ class SearchPage extends HookWidget with AutoRouteWrapper {
   Widget build(BuildContext context) {
     final searchText = useState('');
 
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
           const SizedBox(height: 25),
@@ -78,7 +77,7 @@ class SearchPage extends HookWidget with AutoRouteWrapper {
           ),
         ]),
       ),
-    ));
+    );
   }
 
   @override

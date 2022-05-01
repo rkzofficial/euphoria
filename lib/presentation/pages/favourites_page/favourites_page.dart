@@ -11,51 +11,49 @@ class FavouritesPage extends StatelessWidget with AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Favourites'),
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.black,
-          elevation: 0,
-        ),
-        body: BlocBuilder<AllProfilesBloc, AllProfilesState>(
-          builder: (context, state) {
-            return state.when(
-              loading: () => const CircularProgressIndicator(),
-              loaded: (_, favourites) => !favourites.isEmpty()
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: favourites.size,
-                      itemBuilder: (context, index) {
-                        final e = favourites[index];
-                        return NameCard(
-                          key: Key(e.id.getOrElse('')),
-                          id: e.id.getOrElse(''),
-                          name: e.name.getOrElse(''),
-                          imageUrl:
-                              "https://ui-avatars.com/api/?name=${e.name.getOrElse('')}",
-                          country: e.country.getOrElse(''),
-                          age: e.age.getOrElse(-1).toString(),
-                          isFavourite: true,
-                        );
-                      },
-                    )
-                  : const Padding(
-                      padding: EdgeInsets.only(top: 100),
-                      child: Center(
-                        child: Text('There are no favourites at this moment'),
-                      ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Favourites'),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
+      body: BlocBuilder<AllProfilesBloc, AllProfilesState>(
+        builder: (context, state) {
+          return state.when(
+            loading: () => const CircularProgressIndicator(),
+            loaded: (_, favourites) => !favourites.isEmpty()
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: favourites.size,
+                    itemBuilder: (context, index) {
+                      final e = favourites[index];
+                      return NameCard(
+                        key: Key(e.id.getOrElse('')),
+                        id: e.id.getOrElse(''),
+                        name: e.name.getOrElse(''),
+                        imageUrl:
+                            "https://ui-avatars.com/api/?name=${e.name.getOrElse('')}",
+                        country: e.country.getOrElse(''),
+                        age: e.age.getOrElse(-1).toString(),
+                        isFavourite: true,
+                      );
+                    },
+                  )
+                : const Padding(
+                    padding: EdgeInsets.only(top: 100),
+                    child: Center(
+                      child: Text('There are no favourites at this moment'),
                     ),
-              error: (error) => Padding(
-                padding: const EdgeInsets.only(top: 100),
-                child: Center(
-                  child: Text(error),
-                ),
+                  ),
+            error: (error) => Padding(
+              padding: const EdgeInsets.only(top: 100),
+              child: Center(
+                child: Text(error),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -30,38 +30,36 @@ class DashboardPage extends StatelessWidget with AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: AutoTabsScaffold(
-        routes: _routes,
-        bottomNavigationBuilder: (_, tabsRouter) {
-          return BlocConsumer<ProfileBloc, ProfileState>(
-            listener: (context, state) {
-              state.maybeWhen(
-                  error: (error) {
-                    error.maybeWhen(
-                        orElse: () {},
-                        notFound: () {
-                          context.router.replace(ProfileRoute());
-                        });
-                  },
-                  orElse: () {});
-            },
-            builder: (context, state) => state.maybeWhen(
-              orElse: () => const Center(child: CircularProgressIndicator()),
-              loaded: (profile) => SalomonBottomBar(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
-                selectedItemColor: const Color.fromRGBO(21, 91, 51, 1),
-                currentIndex: tabsRouter.activeIndex,
-                onTap: tabsRouter.setActiveIndex,
-                items: _navBarItems(),
+    return AutoTabsScaffold(
+      routes: _routes,
+      bottomNavigationBuilder: (_, tabsRouter) {
+        return BlocConsumer<ProfileBloc, ProfileState>(
+          listener: (context, state) {
+            state.maybeWhen(
+                error: (error) {
+                  error.maybeWhen(
+                      orElse: () {},
+                      notFound: () {
+                        context.router.replace(ProfileRoute());
+                      });
+                },
+                orElse: () {});
+          },
+          builder: (context, state) => state.maybeWhen(
+            orElse: () => const Center(child: CircularProgressIndicator()),
+            loaded: (profile) => SalomonBottomBar(
+              margin: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 20,
               ),
+              selectedItemColor: const Color.fromRGBO(21, 91, 51, 1),
+              currentIndex: tabsRouter.activeIndex,
+              onTap: tabsRouter.setActiveIndex,
+              items: _navBarItems(),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
