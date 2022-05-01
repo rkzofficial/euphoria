@@ -204,3 +204,155 @@ abstract class _Profile implements Profile {
   _$ProfileCopyWith<_Profile> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+class _$FavouriteProfileTearOff {
+  const _$FavouriteProfileTearOff();
+
+  _FavouriteProfile call(
+      {required UniqueId id, required KtList<Profile> favourites}) {
+    return _FavouriteProfile(
+      id: id,
+      favourites: favourites,
+    );
+  }
+}
+
+/// @nodoc
+const $FavouriteProfile = _$FavouriteProfileTearOff();
+
+/// @nodoc
+mixin _$FavouriteProfile {
+  UniqueId get id => throw _privateConstructorUsedError;
+  KtList<Profile> get favourites => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $FavouriteProfileCopyWith<FavouriteProfile> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FavouriteProfileCopyWith<$Res> {
+  factory $FavouriteProfileCopyWith(
+          FavouriteProfile value, $Res Function(FavouriteProfile) then) =
+      _$FavouriteProfileCopyWithImpl<$Res>;
+  $Res call({UniqueId id, KtList<Profile> favourites});
+}
+
+/// @nodoc
+class _$FavouriteProfileCopyWithImpl<$Res>
+    implements $FavouriteProfileCopyWith<$Res> {
+  _$FavouriteProfileCopyWithImpl(this._value, this._then);
+
+  final FavouriteProfile _value;
+  // ignore: unused_field
+  final $Res Function(FavouriteProfile) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? favourites = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      favourites: favourites == freezed
+          ? _value.favourites
+          : favourites // ignore: cast_nullable_to_non_nullable
+              as KtList<Profile>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$FavouriteProfileCopyWith<$Res>
+    implements $FavouriteProfileCopyWith<$Res> {
+  factory _$FavouriteProfileCopyWith(
+          _FavouriteProfile value, $Res Function(_FavouriteProfile) then) =
+      __$FavouriteProfileCopyWithImpl<$Res>;
+  @override
+  $Res call({UniqueId id, KtList<Profile> favourites});
+}
+
+/// @nodoc
+class __$FavouriteProfileCopyWithImpl<$Res>
+    extends _$FavouriteProfileCopyWithImpl<$Res>
+    implements _$FavouriteProfileCopyWith<$Res> {
+  __$FavouriteProfileCopyWithImpl(
+      _FavouriteProfile _value, $Res Function(_FavouriteProfile) _then)
+      : super(_value, (v) => _then(v as _FavouriteProfile));
+
+  @override
+  _FavouriteProfile get _value => super._value as _FavouriteProfile;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? favourites = freezed,
+  }) {
+    return _then(_FavouriteProfile(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      favourites: favourites == freezed
+          ? _value.favourites
+          : favourites // ignore: cast_nullable_to_non_nullable
+              as KtList<Profile>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FavouriteProfile implements _FavouriteProfile {
+  const _$_FavouriteProfile({required this.id, required this.favourites});
+
+  @override
+  final UniqueId id;
+  @override
+  final KtList<Profile> favourites;
+
+  @override
+  String toString() {
+    return 'FavouriteProfile(id: $id, favourites: $favourites)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _FavouriteProfile &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.favourites, favourites));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(favourites));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FavouriteProfileCopyWith<_FavouriteProfile> get copyWith =>
+      __$FavouriteProfileCopyWithImpl<_FavouriteProfile>(this, _$identity);
+}
+
+abstract class _FavouriteProfile implements FavouriteProfile {
+  const factory _FavouriteProfile(
+      {required UniqueId id,
+      required KtList<Profile> favourites}) = _$_FavouriteProfile;
+
+  @override
+  UniqueId get id;
+  @override
+  KtList<Profile> get favourites;
+  @override
+  @JsonKey(ignore: true)
+  _$FavouriteProfileCopyWith<_FavouriteProfile> get copyWith =>
+      throw _privateConstructorUsedError;
+}

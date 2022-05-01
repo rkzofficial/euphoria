@@ -28,7 +28,7 @@ class ExpandedButton extends StatelessWidget {
               elevation: 0,
               primary: buttonColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(8),
               ),
             ),
             onPressed: isLoading ? () {} : onPressed,

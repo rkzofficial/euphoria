@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/collection.dart';
 
 import '../../domain/core/value_objects.dart';
 import '../../domain/profile/profile.dart';
@@ -12,8 +13,6 @@ part 'profile_dtos.g.dart';
 class ProfileDto with _$ProfileDto {
   factory ProfileDto({
     required String id,
-    // ignore: invalid_annotation_target
-    // @JsonKey(ignore: true) required String id,
     required String name,
     required String country,
     required int age,
@@ -37,6 +36,32 @@ class ProfileDto with _$ProfileDto {
   }
 }
 
+@freezed
+class FavouriteProfileDto with _$FavouriteProfileDto {
+  factory FavouriteProfileDto({
+    required String id,
+    required List<ProfileDto> favourites,
+  }) = _FavouriteProfileDto;
+
+  factory FavouriteProfileDto.fromDomain(FavouriteProfile favouriteProfile) {
+    return FavouriteProfileDto(
+      id: favouriteProfile.id.getOrCrash(),
+      favourites: favouriteProfile.favourites
+          .asList()
+          .map((profile) => ProfileDto.fromDomain(profile))
+          .toList(),
+    );
+  }
+
+  factory FavouriteProfileDto.fromJson(Map<String, dynamic> json) =>
+      _$FavouriteProfileDtoFromJson(json);
+
+  factory FavouriteProfileDto.fromFirestore(DocumentSnapshot doc) {
+    return FavouriteProfileDto.fromJson(doc.data() as Map<String, dynamic>)
+        .copyWith(id: doc.id);
+  }
+}
+
 extension ProfileDtoX on ProfileDto {
   Profile toDomain() {
     return Profile(
@@ -44,6 +69,16 @@ extension ProfileDtoX on ProfileDto {
       name: StringSingleLine(name),
       country: StringSingleLine(country),
       age: Age(age),
+    );
+  }
+}
+
+extension FavouriteProfileDtoX on FavouriteProfileDto {
+  FavouriteProfile toDomain() {
+    return FavouriteProfile(
+      id: UniqueId.fromUniqueString(id),
+      favourites:
+          favourites.map((profile) => profile.toDomain()).toImmutableList(),
     );
   }
 }

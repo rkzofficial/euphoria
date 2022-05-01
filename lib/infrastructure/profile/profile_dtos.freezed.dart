@@ -45,9 +45,7 @@ const $ProfileDto = _$ProfileDtoTearOff();
 
 /// @nodoc
 mixin _$ProfileDto {
-  String get id =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-// @JsonKey(ignore: true) required String id,
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
   int get age => throw _privateConstructorUsedError;
@@ -163,8 +161,7 @@ class _$_ProfileDto implements _ProfileDto {
 
   @override
   final String id;
-  @override // ignore: invalid_annotation_target
-// @JsonKey(ignore: true) required String id,
+  @override
   final String name;
   @override
   final String country;
@@ -218,8 +215,7 @@ abstract class _ProfileDto implements ProfileDto {
 
   @override
   String get id;
-  @override // ignore: invalid_annotation_target
-// @JsonKey(ignore: true) required String id,
+  @override
   String get name;
   @override
   String get country;
@@ -228,5 +224,178 @@ abstract class _ProfileDto implements ProfileDto {
   @override
   @JsonKey(ignore: true)
   _$ProfileDtoCopyWith<_ProfileDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+FavouriteProfileDto _$FavouriteProfileDtoFromJson(Map<String, dynamic> json) {
+  return _FavouriteProfileDto.fromJson(json);
+}
+
+/// @nodoc
+class _$FavouriteProfileDtoTearOff {
+  const _$FavouriteProfileDtoTearOff();
+
+  _FavouriteProfileDto call(
+      {required String id, required List<ProfileDto> favourites}) {
+    return _FavouriteProfileDto(
+      id: id,
+      favourites: favourites,
+    );
+  }
+
+  FavouriteProfileDto fromJson(Map<String, Object?> json) {
+    return FavouriteProfileDto.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $FavouriteProfileDto = _$FavouriteProfileDtoTearOff();
+
+/// @nodoc
+mixin _$FavouriteProfileDto {
+  String get id => throw _privateConstructorUsedError;
+  List<ProfileDto> get favourites => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FavouriteProfileDtoCopyWith<FavouriteProfileDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FavouriteProfileDtoCopyWith<$Res> {
+  factory $FavouriteProfileDtoCopyWith(
+          FavouriteProfileDto value, $Res Function(FavouriteProfileDto) then) =
+      _$FavouriteProfileDtoCopyWithImpl<$Res>;
+  $Res call({String id, List<ProfileDto> favourites});
+}
+
+/// @nodoc
+class _$FavouriteProfileDtoCopyWithImpl<$Res>
+    implements $FavouriteProfileDtoCopyWith<$Res> {
+  _$FavouriteProfileDtoCopyWithImpl(this._value, this._then);
+
+  final FavouriteProfileDto _value;
+  // ignore: unused_field
+  final $Res Function(FavouriteProfileDto) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? favourites = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      favourites: favourites == freezed
+          ? _value.favourites
+          : favourites // ignore: cast_nullable_to_non_nullable
+              as List<ProfileDto>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$FavouriteProfileDtoCopyWith<$Res>
+    implements $FavouriteProfileDtoCopyWith<$Res> {
+  factory _$FavouriteProfileDtoCopyWith(_FavouriteProfileDto value,
+          $Res Function(_FavouriteProfileDto) then) =
+      __$FavouriteProfileDtoCopyWithImpl<$Res>;
+  @override
+  $Res call({String id, List<ProfileDto> favourites});
+}
+
+/// @nodoc
+class __$FavouriteProfileDtoCopyWithImpl<$Res>
+    extends _$FavouriteProfileDtoCopyWithImpl<$Res>
+    implements _$FavouriteProfileDtoCopyWith<$Res> {
+  __$FavouriteProfileDtoCopyWithImpl(
+      _FavouriteProfileDto _value, $Res Function(_FavouriteProfileDto) _then)
+      : super(_value, (v) => _then(v as _FavouriteProfileDto));
+
+  @override
+  _FavouriteProfileDto get _value => super._value as _FavouriteProfileDto;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? favourites = freezed,
+  }) {
+    return _then(_FavouriteProfileDto(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      favourites: favourites == freezed
+          ? _value.favourites
+          : favourites // ignore: cast_nullable_to_non_nullable
+              as List<ProfileDto>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_FavouriteProfileDto implements _FavouriteProfileDto {
+  _$_FavouriteProfileDto({required this.id, required this.favourites});
+
+  factory _$_FavouriteProfileDto.fromJson(Map<String, dynamic> json) =>
+      _$$_FavouriteProfileDtoFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final List<ProfileDto> favourites;
+
+  @override
+  String toString() {
+    return 'FavouriteProfileDto(id: $id, favourites: $favourites)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _FavouriteProfileDto &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.favourites, favourites));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(favourites));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FavouriteProfileDtoCopyWith<_FavouriteProfileDto> get copyWith =>
+      __$FavouriteProfileDtoCopyWithImpl<_FavouriteProfileDto>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FavouriteProfileDtoToJson(this);
+  }
+}
+
+abstract class _FavouriteProfileDto implements FavouriteProfileDto {
+  factory _FavouriteProfileDto(
+      {required String id,
+      required List<ProfileDto> favourites}) = _$_FavouriteProfileDto;
+
+  factory _FavouriteProfileDto.fromJson(Map<String, dynamic> json) =
+      _$_FavouriteProfileDto.fromJson;
+
+  @override
+  String get id;
+  @override
+  List<ProfileDto> get favourites;
+  @override
+  @JsonKey(ignore: true)
+  _$FavouriteProfileDtoCopyWith<_FavouriteProfileDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

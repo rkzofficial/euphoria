@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
+import 'package:kt_dart/collection.dart';
+
 import '../../domain/core/value_objects.dart';
 import '../../domain/profile/i_profile_repository.dart';
 import '../../domain/profile/profile.dart';
 import '../../domain/profile/profile_failure.dart';
 import 'profile_dtos.dart';
-import 'package:flutter/services.dart';
-import 'package:injectable/injectable.dart';
-import 'package:kt_dart/collection.dart';
 
 @prod
 @LazySingleton(as: IProfileRepository)
@@ -28,16 +29,42 @@ class ProfileRepository implements IProfileRepository {
   }
 
   @override
-  Future<Either<ProfileFailure, Unit>> createProfile(Profile profile) async {
+  Stream<Either<ProfileFailure, FavouriteProfile>> watchFavourites(
+      Profile user) async* {
     try {
-      final profileDoc = _firestore.collection('profiles');
-      final profileDto = ProfileDto.fromDomain(profile);
+      final favouriteProfiles = _firestore.collection('favourite_profiles');
+      yield* favouriteProfiles
+          .doc(user.id.getOrCrash())
+          .snapshots()
+          .map((snapshot) {
+        if (!snapshot.exists) {
+          return right(
+              FavouriteProfile(id: user.id, favourites: emptyList<Profile>()));
+        }
+        final favouriteProfile =
+            FavouriteProfileDto.fromFirestore(snapshot).toDomain();
+        return right(favouriteProfile);
+      });
+    } catch (e) {
+      yield right(
+          FavouriteProfile(id: user.id, favourites: emptyList<Profile>()));
+    }
+  }
 
-      await profileDoc.doc(profileDto.id).set(profileDto.toJson());
+  @override
+  Future<Either<ProfileFailure, Unit>> updateFavourites(
+      FavouriteProfile favouriteProfile) async {
+    try {
+      final favouriteProfiles = _firestore.collection('favourite_profiles');
+      final favouriteProfileDto =
+          FavouriteProfileDto.fromDomain(favouriteProfile);
+
+      await favouriteProfiles
+          .doc(favouriteProfileDto.id)
+          .set(favouriteProfileDto.toJson());
 
       return right(unit);
     } on PlatformException catch (e) {
-      // These error codes and messages aren't in the documentation AFAIK, experiment in the debugger to find out about them.
       if (e.message!.contains('PERMISSION_DENIED')) {
         return left(const ProfileFailure.serverError());
       } else {
@@ -70,6 +97,10 @@ class ProfileRepository implements IProfileRepository {
       final profileDoc = _firestore.collection('profiles');
 
       final profile = await profileDoc.doc(id.getOrCrash()).get();
+
+      if (!profile.exists) {
+        return left(const ProfileFailure.notFound());
+      }
 
       return right(ProfileDto.fromFirestore(profile).toDomain());
     } on PlatformException catch (e) {

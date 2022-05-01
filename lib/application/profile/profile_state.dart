@@ -7,5 +7,6 @@ part of 'profile_bloc.dart';
 class ProfileState with _$ProfileState {
   const factory ProfileState.loading() = ProfileLoading;
   const factory ProfileState.loaded(Profile profile) = ProfileLoaded;
+  const factory ProfileState.profileUpdated() = ProfileUpdated;
   const factory ProfileState.error(ProfileFailure failure) = ProfileEror;
 }

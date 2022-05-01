@@ -30,6 +30,9 @@ Either<ValueFailure<String>, String> validatePhotoUrl(String input) {
 }
 
 Either<ValueFailure<String>, String> validateSingleLine(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.emptyLine(failedValue: input));
+  }
   if (input.contains('\n')) {
     return left(ValueFailure.multiline(failedValue: input));
   } else {
@@ -38,7 +41,7 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
 }
 
 Either<ValueFailure<int>, int> validateAge(int input) {
-  if (input < 1 && input > 120) {
+  if (input < 1 || input > 120) {
     return left(ValueFailure.invalidAge(failedValue: input));
   } else {
     return right(input);

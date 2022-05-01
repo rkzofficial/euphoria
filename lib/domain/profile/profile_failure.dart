@@ -7,4 +7,5 @@ class ProfileFailure with _$ProfileFailure {
   const factory ProfileFailure.serverError() = ServerError;
   const factory ProfileFailure.cacheError() = CacheError;
   const factory ProfileFailure.unexpected() = UnexpectedError;
+  const factory ProfileFailure.notFound() = NotFoundError;
 }

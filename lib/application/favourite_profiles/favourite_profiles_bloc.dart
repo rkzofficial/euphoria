@@ -1,4 +1,4 @@
-import 'package:euphoria/domain/profile/profile.dart';
+import '../../domain/profile/profile.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'favourite_profiles_bloc.freezed.dart';

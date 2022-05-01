@@ -29,6 +29,10 @@ class _$ProfileFailureTearOff {
   UnexpectedError unexpected() {
     return const UnexpectedError();
   }
+
+  NotFoundError notFound() {
+    return const NotFoundError();
+  }
 }
 
 /// @nodoc
@@ -41,6 +45,7 @@ mixin _$ProfileFailure {
     required TResult Function() serverError,
     required TResult Function() cacheError,
     required TResult Function() unexpected,
+    required TResult Function() notFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +53,7 @@ mixin _$ProfileFailure {
     TResult Function()? serverError,
     TResult Function()? cacheError,
     TResult Function()? unexpected,
+    TResult Function()? notFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +61,7 @@ mixin _$ProfileFailure {
     TResult Function()? serverError,
     TResult Function()? cacheError,
     TResult Function()? unexpected,
+    TResult Function()? notFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +70,7 @@ mixin _$ProfileFailure {
     required TResult Function(ServerError value) serverError,
     required TResult Function(CacheError value) cacheError,
     required TResult Function(UnexpectedError value) unexpected,
+    required TResult Function(NotFoundError value) notFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +78,7 @@ mixin _$ProfileFailure {
     TResult Function(ServerError value)? serverError,
     TResult Function(CacheError value)? cacheError,
     TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +86,7 @@ mixin _$ProfileFailure {
     TResult Function(ServerError value)? serverError,
     TResult Function(CacheError value)? cacheError,
     TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +152,7 @@ class _$ServerError implements ServerError {
     required TResult Function() serverError,
     required TResult Function() cacheError,
     required TResult Function() unexpected,
+    required TResult Function() notFound,
   }) {
     return serverError();
   }
@@ -152,6 +163,7 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? cacheError,
     TResult Function()? unexpected,
+    TResult Function()? notFound,
   }) {
     return serverError?.call();
   }
@@ -162,6 +174,7 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? cacheError,
     TResult Function()? unexpected,
+    TResult Function()? notFound,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -176,6 +189,7 @@ class _$ServerError implements ServerError {
     required TResult Function(ServerError value) serverError,
     required TResult Function(CacheError value) cacheError,
     required TResult Function(UnexpectedError value) unexpected,
+    required TResult Function(NotFoundError value) notFound,
   }) {
     return serverError(this);
   }
@@ -186,6 +200,7 @@ class _$ServerError implements ServerError {
     TResult Function(ServerError value)? serverError,
     TResult Function(CacheError value)? cacheError,
     TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
   }) {
     return serverError?.call(this);
   }
@@ -196,6 +211,7 @@ class _$ServerError implements ServerError {
     TResult Function(ServerError value)? serverError,
     TResult Function(CacheError value)? cacheError,
     TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -251,6 +267,7 @@ class _$CacheError implements CacheError {
     required TResult Function() serverError,
     required TResult Function() cacheError,
     required TResult Function() unexpected,
+    required TResult Function() notFound,
   }) {
     return cacheError();
   }
@@ -261,6 +278,7 @@ class _$CacheError implements CacheError {
     TResult Function()? serverError,
     TResult Function()? cacheError,
     TResult Function()? unexpected,
+    TResult Function()? notFound,
   }) {
     return cacheError?.call();
   }
@@ -271,6 +289,7 @@ class _$CacheError implements CacheError {
     TResult Function()? serverError,
     TResult Function()? cacheError,
     TResult Function()? unexpected,
+    TResult Function()? notFound,
     required TResult orElse(),
   }) {
     if (cacheError != null) {
@@ -285,6 +304,7 @@ class _$CacheError implements CacheError {
     required TResult Function(ServerError value) serverError,
     required TResult Function(CacheError value) cacheError,
     required TResult Function(UnexpectedError value) unexpected,
+    required TResult Function(NotFoundError value) notFound,
   }) {
     return cacheError(this);
   }
@@ -295,6 +315,7 @@ class _$CacheError implements CacheError {
     TResult Function(ServerError value)? serverError,
     TResult Function(CacheError value)? cacheError,
     TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
   }) {
     return cacheError?.call(this);
   }
@@ -305,6 +326,7 @@ class _$CacheError implements CacheError {
     TResult Function(ServerError value)? serverError,
     TResult Function(CacheError value)? cacheError,
     TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
     required TResult orElse(),
   }) {
     if (cacheError != null) {
@@ -362,6 +384,7 @@ class _$UnexpectedError implements UnexpectedError {
     required TResult Function() serverError,
     required TResult Function() cacheError,
     required TResult Function() unexpected,
+    required TResult Function() notFound,
   }) {
     return unexpected();
   }
@@ -372,6 +395,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function()? serverError,
     TResult Function()? cacheError,
     TResult Function()? unexpected,
+    TResult Function()? notFound,
   }) {
     return unexpected?.call();
   }
@@ -382,6 +406,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function()? serverError,
     TResult Function()? cacheError,
     TResult Function()? unexpected,
+    TResult Function()? notFound,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -396,6 +421,7 @@ class _$UnexpectedError implements UnexpectedError {
     required TResult Function(ServerError value) serverError,
     required TResult Function(CacheError value) cacheError,
     required TResult Function(UnexpectedError value) unexpected,
+    required TResult Function(NotFoundError value) notFound,
   }) {
     return unexpected(this);
   }
@@ -406,6 +432,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function(ServerError value)? serverError,
     TResult Function(CacheError value)? cacheError,
     TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
   }) {
     return unexpected?.call(this);
   }
@@ -416,6 +443,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function(ServerError value)? serverError,
     TResult Function(CacheError value)? cacheError,
     TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -427,4 +455,121 @@ class _$UnexpectedError implements UnexpectedError {
 
 abstract class UnexpectedError implements ProfileFailure {
   const factory UnexpectedError() = _$UnexpectedError;
+}
+
+/// @nodoc
+abstract class $NotFoundErrorCopyWith<$Res> {
+  factory $NotFoundErrorCopyWith(
+          NotFoundError value, $Res Function(NotFoundError) then) =
+      _$NotFoundErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NotFoundErrorCopyWithImpl<$Res>
+    extends _$ProfileFailureCopyWithImpl<$Res>
+    implements $NotFoundErrorCopyWith<$Res> {
+  _$NotFoundErrorCopyWithImpl(
+      NotFoundError _value, $Res Function(NotFoundError) _then)
+      : super(_value, (v) => _then(v as NotFoundError));
+
+  @override
+  NotFoundError get _value => super._value as NotFoundError;
+}
+
+/// @nodoc
+
+class _$NotFoundError implements NotFoundError {
+  const _$NotFoundError();
+
+  @override
+  String toString() {
+    return 'ProfileFailure.notFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is NotFoundError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() cacheError,
+    required TResult Function() unexpected,
+    required TResult Function() notFound,
+  }) {
+    return notFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? cacheError,
+    TResult Function()? unexpected,
+    TResult Function()? notFound,
+  }) {
+    return notFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? cacheError,
+    TResult Function()? unexpected,
+    TResult Function()? notFound,
+    required TResult orElse(),
+  }) {
+    if (notFound != null) {
+      return notFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(CacheError value) cacheError,
+    required TResult Function(UnexpectedError value) unexpected,
+    required TResult Function(NotFoundError value) notFound,
+  }) {
+    return notFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(CacheError value)? cacheError,
+    TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
+  }) {
+    return notFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(CacheError value)? cacheError,
+    TResult Function(UnexpectedError value)? unexpected,
+    TResult Function(NotFoundError value)? notFound,
+    required TResult orElse(),
+  }) {
+    if (notFound != null) {
+      return notFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NotFoundError implements ProfileFailure {
+  const factory NotFoundError() = _$NotFoundError;
 }

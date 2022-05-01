@@ -16,6 +16,9 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.multiline({
     required T failedValue,
   }) = Multiline<T>;
+  const factory ValueFailure.emptyLine({
+    required T failedValue,
+  }) = EmptyLine<T>;
   const factory ValueFailure.invalidAge({
     required T failedValue,
   }) = InvalidAge<T>;

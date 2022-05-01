@@ -21,3 +21,19 @@ Map<String, dynamic> _$$_ProfileDtoToJson(_$_ProfileDto instance) =>
       'country': instance.country,
       'age': instance.age,
     };
+
+_$_FavouriteProfileDto _$$_FavouriteProfileDtoFromJson(
+        Map<String, dynamic> json) =>
+    _$_FavouriteProfileDto(
+      id: json['id'] as String,
+      favourites: (json['favourites'] as List<dynamic>)
+          .map((e) => ProfileDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_FavouriteProfileDtoToJson(
+        _$_FavouriteProfileDto instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'favourites': instance.favourites.map((e) => e.toJson()).toList(),
+    };

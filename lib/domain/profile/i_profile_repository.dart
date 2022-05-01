@@ -7,7 +7,10 @@ import 'profile_failure.dart';
 
 abstract class IProfileRepository {
   Stream<Either<ProfileFailure, KtList<Profile>>> watchAll();
+  Stream<Either<ProfileFailure, FavouriteProfile>> watchFavourites(
+      Profile user);
+  Future<Either<ProfileFailure, Unit>> updateFavourites(
+      FavouriteProfile favouriteProfile);
   Future<Either<ProfileFailure, Profile>> getProfile(UniqueId id);
-  Future<Either<ProfileFailure, Unit>> createProfile(Profile profile);
   Future<Either<ProfileFailure, Unit>> updateProfile(Profile profile);
 }

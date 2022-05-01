@@ -11,16 +11,17 @@ import 'package:google_sign_in/google_sign_in.dart' as _i8;
 import 'package:hive_flutter/hive_flutter.dart' as _i4;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/auth/auth_bloc.dart' as _i15;
+import 'application/all_profiles/all_profiles_bloc.dart' as _i15;
+import 'application/auth/auth_bloc.dart' as _i16;
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i14;
 import 'application/profile/profile_bloc.dart' as _i13;
 import 'domain/auth/i_auth_facade.dart' as _i9;
 import 'domain/profile/i_profile_repository.dart' as _i11;
 import 'infrastructure/auth/firebase_auth_facade.dart' as _i10;
 import 'infrastructure/auth/firebase_user_mapper.dart' as _i7;
-import 'infrastructure/core/app_router_injectable_module.dart' as _i16;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i18;
-import 'infrastructure/core/hive_injectable_module.dart' as _i17;
+import 'infrastructure/core/app_router_injectable_module.dart' as _i17;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i19;
+import 'infrastructure/core/hive_injectable_module.dart' as _i18;
 import 'infrastructure/profile/profile_repository.dart' as _i12;
 import 'presentation/routes/router.gr.dart' as _i3;
 
@@ -56,12 +57,14 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       _i13.ProfileBloc(get<_i11.IProfileRepository>(), get<_i9.IAuthFacade>()));
   gh.factory<_i14.SignInFormBloc>(
       () => _i14.SignInFormBloc(get<_i9.IAuthFacade>()));
-  gh.factory<_i15.AuthBloc>(() => _i15.AuthBloc(get<_i9.IAuthFacade>()));
+  gh.factory<_i15.AllProfilesBloc>(() => _i15.AllProfilesBloc(
+      get<_i11.IProfileRepository>(), get<_i9.IAuthFacade>()));
+  gh.factory<_i16.AuthBloc>(() => _i16.AuthBloc(get<_i9.IAuthFacade>()));
   return get;
 }
 
-class _$AppRouterInjectableModule extends _i16.AppRouterInjectableModule {}
+class _$AppRouterInjectableModule extends _i17.AppRouterInjectableModule {}
 
-class _$HiveInjectableModule extends _i17.HiveInjectableModule {}
+class _$HiveInjectableModule extends _i18.HiveInjectableModule {}
 
-class _$FirebaseInjectableModule extends _i18.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i19.FirebaseInjectableModule {}

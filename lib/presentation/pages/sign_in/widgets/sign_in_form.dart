@@ -30,6 +30,8 @@ class SignInForm extends HookWidget {
           (either) => either.fold(
             (failure) => ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
+                behavior: SnackBarBehavior.floating,
+                duration: const Duration(milliseconds: 500),
                 content: Text(
                   failure.map(
                     // Use localized strings here in your apps
