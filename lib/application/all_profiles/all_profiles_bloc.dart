@@ -102,7 +102,7 @@ class AllProfilesBloc extends Bloc<AllProfilesEvent, AllProfilesState> {
           _profileRepository.updateFavourites(
             FavouriteProfile(
               id: currentUser.id,
-              favourites: [...favourites.asList(), profile].toImmutableList(),
+              favourites: {...favourites.asList(), profile}.toImmutableList(),
             ),
           );
         },
@@ -115,7 +115,10 @@ class AllProfilesBloc extends Bloc<AllProfilesEvent, AllProfilesState> {
           _profileRepository.updateFavourites(
             FavouriteProfile(
               id: currentUser.id,
-              favourites: favourites.filter((p) => p.id != profile.id),
+              favourites: favourites
+                  .filter((p) => p.id != profile.id)
+                  .toSet()
+                  .toMutableList(),
             ),
           );
         },

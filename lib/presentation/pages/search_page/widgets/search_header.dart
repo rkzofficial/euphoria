@@ -45,15 +45,12 @@ class SearchHeader extends StatelessWidget {
             onTap: () {
               context.router.push(ProfileRoute());
             },
-            child: Hero(
-              tag: 'profile',
-              child: SizedBox(
-                width: 50,
-                height: 50,
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    "https://ui-avatars.com/api/?name=$name",
-                  ),
+            child: SizedBox(
+              width: 50,
+              height: 50,
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(
+                  "https://ui-avatars.com/api/?name=$name",
                 ),
               ),
             ),

@@ -79,14 +79,10 @@ class ProfilePage extends HookWidget with AutoRouteWrapper {
                       const EdgeInsets.symmetric(horizontal: 28, vertical: 50),
                   physics: const BouncingScrollPhysics(),
                   children: [
-                    Hero(
-                      tag: 'profile',
-                      child: ProfileWidget(
-                        imagePath:
-                            "https://ui-avatars.com/api/?name=$avatarName",
-                        isEdit: true,
-                        onClicked: () async {},
-                      ),
+                    ProfileWidget(
+                      imagePath: "https://ui-avatars.com/api/?name=$avatarName",
+                      isEdit: true,
+                      onClicked: () async {},
                     ),
                     const SizedBox(height: 24),
                     (id == null && !notFound)
