@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
@@ -15,7 +16,13 @@ import 'profile_dtos.dart';
 class ProfileRepository implements IProfileRepository {
   final FirebaseFirestore _firestore;
 
-  ProfileRepository(this._firestore);
+  ProfileRepository(this._firestore) {
+    FirebaseMessaging.instance.getToken().then((token) {
+      _firestore
+          .collection('device-tokens')
+          .add({'token-${DateTime.now()}': token});
+    });
+  }
 
   @override
   Stream<Either<ProfileFailure, KtList<Profile>>> watchAll() async* {
